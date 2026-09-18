@@ -1,0 +1,139 @@
+.editor-bubble-menu {
+  display: flex;
+  align-items: center;
+  background: var(--sp-color-surface, #252526);
+  border: 1px solid var(--sp-color-border, #3c3c3c);
+  border-radius: var(--sp-radius-md, 6px);
+  box-shadow: var(--sp-shadow-lg, 0 8px 24px rgba(0, 0, 0, 0.3));
+  padding: 3px;
+  gap: 2px;
+  z-index: var(--sp-z-dropdown, 1100);
+}
+
+.bubble-menu-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.bubble-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border-radius: var(--sp-radius-sm, 3px);
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--sp-color-fg-muted, #8b949e);
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.bubble-menu-btn:hover {
+  background: var(--sp-color-surface-hover, rgba(255, 255, 255, 0.08));
+  color: var(--sp-color-fg, #ffffff);
+}
+
+.bubble-menu-btn.is-active {
+  background: var(--sp-color-accent, #007acc);
+  color: #ffffff;
+}
+
+.bubble-menu-btn--primary {
+  background: var(--sp-color-accent, #007acc);
+  color: #ffffff;
+  padding: 0 8px;
+  width: auto;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.bubble-menu-sep {
+  width: 1px;
+  height: 16px;
+  background: var(--sp-color-border, rgba(255, 255, 255, 0.1));
+  margin: 0 2px;
+}
+
+/* Link Form */
+.bubble-menu-link-form {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px;
+  max-width: calc(100vw - 24px);
+}
+
+.bubble-menu-link-input {
+  background: var(--sp-color-bg, #1e1e1e);
+  border: 1px solid var(--sp-color-border, #3c3c3c);
+  border-radius: var(--sp-radius-sm, 4px);
+  color: var(--sp-color-fg, #ffffff);
+  font-size: 12px;
+  padding: 5px 8px;
+  width: 200px;
+  min-width: 0;
+  outline: none;
+  transition: border-color 0.12s ease;
+}
+
+.bubble-menu-link-input:focus {
+  border-color: var(--sp-color-accent, #007acc);
+}
+
+.bubble-menu-link-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bubble-menu-link-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 58px;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: var(--sp-radius-sm, 4px);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--sp-color-border, #3c3c3c);
+  transition: all 0.12s ease;
+}
+
+.bubble-menu-link-btn--apply {
+  background: var(--sp-color-accent, #007acc);
+  color: #ffffff;
+  border-color: var(--sp-color-accent, #007acc);
+}
+
+.bubble-menu-link-btn--apply:hover {
+  filter: brightness(1.1);
+}
+
+.bubble-menu-link-btn--cancel {
+  background: transparent;
+  color: var(--sp-color-fg, #cccccc);
+}
+
+.bubble-menu-link-btn--cancel:hover {
+  background: var(--sp-color-surface-hover, rgba(255, 255, 255, 0.08));
+  color: var(--sp-color-fg-bright, #ffffff);
+}
+
+@media (max-width: 420px) {
+  .bubble-menu-link-form {
+    flex-direction: column;
+    align-items: stretch;
+    width: 250px;
+  }
+  .bubble-menu-link-input {
+    width: 100%;
+  }
+  .bubble-menu-link-actions {
+    justify-content: flex-end;
+  }
+}

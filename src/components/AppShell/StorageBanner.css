@@ -1,0 +1,113 @@
+.storage-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 16px;
+  background-color: var(--sp-color-bg-secondary, #252526);
+  border-bottom: 1px solid var(--sp-color-border, #3e3e42);
+  color: var(--sp-color-fg, #cccccc);
+  font-size: 13px;
+  line-height: 1.4;
+  z-index: 50;
+  animation: storageBannerSlide 0.2s ease-out;
+}
+
+@keyframes storageBannerSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.storage-banner--quota,
+.storage-banner--error {
+  border-left: 4px solid var(--sp-color-error, #f14c4c);
+  background-color: var(--sp-color-bg-dropdown, #252526);
+}
+
+.storage-banner__content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.storage-banner__icon {
+  flex-shrink: 0;
+  color: var(--sp-color-error, #f14c4c);
+}
+
+.storage-banner__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.storage-banner__message {
+  color: var(--sp-color-fg-primary, #ffffff);
+  font-weight: 600;
+}
+
+.storage-banner__recommendation {
+  color: var(--sp-color-fg-subtle, #999999);
+  font-size: 12px;
+}
+
+.storage-banner__diag {
+  color: var(--sp-color-fg-muted, #777777);
+  font-family: var(--sp-font-mono, monospace);
+  font-size: 11px;
+}
+
+.storage-banner__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.storage-banner__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: var(--sp-radius-sm, 3px);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.storage-banner__btn--backup {
+  background-color: var(--sp-color-accent, #007acc);
+  color: #ffffff;
+}
+
+.storage-banner__btn--backup:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.storage-banner__btn--backup:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.storage-banner__btn--dismiss {
+  background: transparent;
+  color: var(--sp-color-fg-subtle, #999999);
+  padding: 5px;
+  border-radius: var(--sp-radius-sm, 3px);
+}
+
+.storage-banner__btn--dismiss:hover {
+  background-color: var(--sp-color-bg-hover, rgba(255, 255, 255, 0.08));
+  color: var(--sp-color-fg, #cccccc);
+}

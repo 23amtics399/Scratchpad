@@ -1,0 +1,185 @@
+/* CodeBlock NodeView Container */
+.code-block-wrapper {
+  position: relative;
+  margin: var(--sp-space-4) 0;
+  border-radius: var(--sp-radius-md);
+  background: var(--sp-color-bg-code, #1e1e1e);
+  border: 1px solid var(--sp-color-border-subtle, rgba(255, 255, 255, 0.1));
+  overflow: hidden;
+  font-family: var(--sp-font-mono, 'JetBrains Mono', monospace);
+}
+
+/* Header bar */
+.code-block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid var(--sp-color-border-subtle, rgba(255, 255, 255, 0.08));
+  user-select: none;
+}
+
+/* Language selector */
+.code-block-lang-select {
+  background: transparent;
+  color: var(--sp-color-fg-muted);
+  border: 1px solid transparent;
+  border-radius: var(--sp-radius-sm);
+  padding: 2px 6px;
+  font-size: var(--sp-font-size-xs, 12px);
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+.code-block-lang-select:hover,
+.code-block-lang-select:focus-visible {
+  color: var(--sp-color-fg);
+  background: var(--sp-color-surface-hover);
+  border-color: var(--sp-color-border);
+}
+
+.code-block-lang-select option {
+  background: var(--sp-color-surface);
+  color: var(--sp-color-fg);
+}
+
+/* Action buttons */
+.code-block-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.code-block-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--sp-radius-sm);
+  color: var(--sp-color-fg-muted);
+  padding: 3px 6px;
+  font-size: var(--sp-font-size-xs, 12px);
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.code-block-btn:hover {
+  background: var(--sp-color-surface-hover);
+  color: var(--sp-color-fg);
+}
+
+.code-block-btn--active {
+  background: var(--sp-color-accent-muted);
+  color: var(--sp-color-accent);
+}
+
+.code-block-btn--copied {
+  color: var(--sp-color-success);
+}
+
+.code-block-btn-label {
+  font-size: 11px;
+}
+
+/* Code area */
+.code-block-pre {
+  margin: 0;
+  padding: 12px 16px;
+  background: transparent;
+  font-family: inherit;
+  font-size: 13.5px;
+  line-height: 1.55;
+  tab-size: 2;
+  overflow-x: auto;
+  color: var(--sp-color-fg-code, #d4d4d4);
+}
+
+.code-block-pre code {
+  display: block;
+  font-family: inherit;
+  background: transparent;
+  padding: 0;
+  border: none;
+  white-space: pre;
+}
+
+/* Word wrap option */
+.code-block-wrapper--wrap .code-block-pre code {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Optional line numbers (CSS counter) */
+.code-block-wrapper--numbers .code-block-pre code {
+  counter-reset: line;
+}
+
+.code-block-wrapper--numbers .code-block-pre code > span.line-numbered,
+.code-block-wrapper--numbers .code-block-pre {
+  padding-left: 20px;
+}
+
+/* Syntax Highlighting theme (HLJS tokens) */
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #c586c0;
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-section,
+.hljs-attribute,
+.hljs-literal,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-addition {
+  color: #ce9178;
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-deletion,
+.hljs-meta {
+  color: #6a9955;
+  font-style: italic;
+}
+
+.hljs-number,
+.hljs-regexp,
+.hljs-link {
+  color: #b5cea8;
+}
+
+.hljs-variable,
+.hljs-name {
+  color: #9cdcfe;
+}
+
+.hljs-function,
+.hljs-built_in {
+  color: #dcdcaa;
+}
+
+.hljs-attr {
+  color: #9cdcfe;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #d7ba7d;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}

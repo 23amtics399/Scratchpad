@@ -1,0 +1,124 @@
+.statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: var(--sp-layout-statusbar-height, var(--sp-statusbar-height, 24px));
+  background-color: var(--sp-color-statusbar-bg, #007acc);
+  color: var(--sp-color-statusbar-fg, #ffffff);
+  padding: 0 var(--sp-space-3, 10px);
+  font-family: var(--sp-font-sans);
+  font-size: var(--sp-font-size-xs, 11px);
+  user-select: none;
+  flex-shrink: 0;
+  overflow: hidden;
+  z-index: var(--sp-z-statusbar, 100);
+}
+
+.statusbar__section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.statusbar__section--left {
+  min-width: 0;
+  overflow: hidden;
+  flex-shrink: 1;
+}
+
+.statusbar__section--right {
+  flex-shrink: 0;
+}
+
+.statusbar__divider {
+  display: inline-block;
+  width: 1px;
+  height: 12px;
+  background-color: var(--sp-color-statusbar-muted, rgba(255, 255, 255, 0.25));
+  margin: 0 1px;
+  flex-shrink: 0;
+}
+
+.statusbar__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  opacity: 0.92;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.statusbar__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 20px;
+  padding: 0 var(--sp-space-2, 6px);
+  background: transparent;
+  border: none;
+  border-radius: var(--sp-radius-sm, 3px);
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  opacity: 0.9;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity var(--sp-anim-fast, 100ms), background-color var(--sp-anim-fast, 100ms);
+}
+
+.statusbar__btn:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.statusbar__btn--active {
+  background-color: rgba(255, 255, 255, 0.2);
+  opacity: 1;
+}
+
+.statusbar__theme-text {
+  text-transform: capitalize;
+}
+
+.statusbar__save-icon {
+  color: var(--sp-color-success, #86efac);
+}
+
+.statusbar__item--saved {
+  font-weight: 500;
+}
+
+.statusbar__item--type {
+  font-weight: 500;
+  opacity: 0.95;
+}
+
+.statusbar__item--count {
+  font-family: var(--sp-font-mono);
+  font-size: 11px;
+}
+
+.statusbar__item--workspace {
+  opacity: 0.85;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Responsive visibility rules (independent of sidebar width) */
+@media (max-width: 900px) {
+  .statusbar__desktop-only,
+  .statusbar__divider--desktop-only {
+    display: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .statusbar__hide-mobile,
+  .statusbar__divider--tablet {
+    display: none !important;
+  }
+}

@@ -1,0 +1,107 @@
+/* Global Toast System Styles */
+.toast-container {
+  position: fixed;
+  bottom: calc(var(--sp-layout-statusbar-height, 24px) + 14px);
+  right: 16px;
+  z-index: var(--sp-z-toast, 1500);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 420px;
+  pointer-events: none;
+}
+
+.toast-item {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--sp-color-dialog-bg, var(--sp-color-surface));
+  border: 1px solid var(--sp-color-border-strong, var(--sp-color-border));
+  border-radius: var(--sp-radius-md, 6px);
+  box-shadow: var(--sp-shadow-lg, 0 6px 20px rgba(0, 0, 0, 0.25));
+  font-family: var(--sp-font-sans);
+  font-size: 13px;
+  color: var(--sp-color-fg);
+  animation: toast-slide-in 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.15s ease;
+}
+
+@keyframes toast-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.toast-icon {
+  flex-shrink: 0;
+}
+
+.toast-icon--success {
+  color: var(--sp-color-success);
+}
+
+.toast-icon--warning {
+  color: var(--sp-color-warning);
+}
+
+.toast-icon--error {
+  color: var(--sp-color-danger);
+}
+
+.toast-icon--info {
+  color: var(--sp-color-accent);
+}
+
+.toast-message {
+  flex: 1;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.toast-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 10px;
+  border-radius: var(--sp-radius-sm, 4px);
+  border: 1px solid var(--sp-color-accent);
+  background: var(--sp-color-accent-muted);
+  color: var(--sp-color-accent);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.12s ease;
+}
+
+.toast-action-btn:hover {
+  background: var(--sp-color-accent);
+  color: var(--sp-color-fg-on-accent, #ffffff);
+}
+
+.toast-dismiss-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border: none;
+  background: transparent;
+  color: var(--sp-color-fg-muted);
+  cursor: pointer;
+  border-radius: 3px;
+  flex-shrink: 0;
+  transition: all 0.12s ease;
+}
+
+.toast-dismiss-btn:hover {
+  background: var(--sp-color-surface-hover);
+  color: var(--sp-color-fg);
+}

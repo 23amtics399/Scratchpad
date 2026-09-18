@@ -1,0 +1,161 @@
+.menubar {
+  display: flex;
+  align-items: center;
+  height: var(--sp-layout-menubar-height, var(--sp-menubar-height, 32px));
+  background-color: var(--sp-color-menubar-bg);
+  border-bottom: 1px solid var(--sp-color-menubar-border, var(--sp-color-border));
+  color: var(--sp-color-menubar-fg, var(--sp-color-fg));
+  padding: 0 var(--sp-space-3, 10px);
+  user-select: none;
+  position: relative;
+  z-index: var(--sp-z-menubar, 1000);
+}
+
+.menubar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-space-2, 6px);
+  margin-right: var(--sp-space-4, 16px);
+}
+
+.menubar__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menubar__title {
+  font-family: var(--sp-font-sans);
+  font-size: var(--sp-font-size-xs, 12px);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--sp-color-menubar-fg, var(--sp-color-fg));
+}
+
+.menubar__menus {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.menubar__item-container {
+  position: relative;
+}
+
+.menubar__btn {
+  height: 24px;
+  padding: 0 var(--sp-space-2, 8px);
+  font-family: var(--sp-font-sans);
+  font-size: var(--sp-font-size-xs, 12px);
+  font-weight: 500;
+  color: var(--sp-color-menubar-fg, var(--sp-color-fg));
+  opacity: 0.88;
+  background: transparent;
+  border: none;
+  border-radius: var(--sp-radius-sm, 3px);
+  cursor: pointer;
+  transition: background-color var(--sp-anim-fast, 100ms), color var(--sp-anim-fast, 100ms), opacity var(--sp-anim-fast, 100ms);
+}
+
+.menubar__btn:hover,
+.menubar__btn--active {
+  background-color: var(--sp-color-menubar-btn-hover, var(--sp-color-surface-hover));
+  color: var(--sp-color-menubar-fg, var(--sp-color-fg));
+  opacity: 1;
+}
+
+/* Dropdown */
+.menubar__dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 220px;
+  max-height: calc(100vh - var(--sp-layout-menubar-height, 32px) - 16px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  background-color: var(--sp-color-menu-bg, var(--sp-color-surface));
+  color: var(--sp-color-menu-fg, var(--sp-color-fg));
+  border: 1px solid var(--sp-color-border);
+  border-radius: var(--sp-radius-md, 6px);
+  box-shadow: var(--sp-shadow-lg, 0 10px 25px -5px rgba(0, 0, 0, 0.4));
+  padding: var(--sp-space-1, 4px);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  z-index: var(--sp-z-dropdown, 1100);
+  animation: menubarFadeIn var(--sp-anim-fast, 120ms) ease-out;
+}
+
+@keyframes menubarFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menubar__dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-space-2, 8px);
+  width: 100%;
+  padding: var(--sp-space-2, 6px) var(--sp-space-3, 10px);
+  font-family: var(--sp-font-sans);
+  font-size: var(--sp-font-size-xs, 12px);
+  font-weight: 500;
+  color: var(--sp-color-menu-fg, var(--sp-color-fg));
+  background: transparent;
+  border: none;
+  border-radius: var(--sp-radius-sm, 4px);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color var(--sp-anim-fast, 100ms), color var(--sp-anim-fast, 100ms);
+}
+
+.menubar__dropdown-item span {
+  flex: 1;
+}
+
+.menubar__dropdown-item:hover:not(:disabled) {
+  background-color: var(--sp-color-menu-hover, var(--sp-color-surface-hover));
+  color: var(--sp-color-fg);
+}
+
+.menubar__dropdown-item:disabled {
+  opacity: 0.4;
+  color: var(--sp-color-fg-muted);
+  cursor: not-allowed;
+}
+
+.menubar__dropdown-item kbd {
+  font-family: var(--sp-font-mono);
+  font-size: 10px;
+  color: var(--sp-color-fg-muted);
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.menubar__dropdown-separator {
+  height: 1px;
+  background-color: var(--sp-color-menu-separator, var(--sp-color-border));
+  margin: var(--sp-space-1, 4px) 0;
+}
+
+.menubar__dropdown-header {
+  font-family: var(--sp-font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--sp-color-fg-muted);
+  padding: var(--sp-space-1, 4px) var(--sp-space-3, 10px);
+}
+
+.menubar__dropdown-check {
+  color: var(--sp-color-accent);
+}

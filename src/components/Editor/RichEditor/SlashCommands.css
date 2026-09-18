@@ -1,0 +1,107 @@
+.slash-commands-menu {
+  position: absolute;
+  width: 280px;
+  max-height: 320px;
+  background: var(--sp-color-bg-dropdown, #252526);
+  border: 1px solid var(--sp-color-border-default, #3c3c3c);
+  border-radius: var(--sp-radius-md);
+  box-shadow: var(--sp-shadow-xl);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 6px;
+  animation: fadeInDown 0.15s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slash-commands-header {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--sp-color-fg-muted, #8b949e);
+  padding: 4px 8px 6px;
+}
+
+.slash-commands-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.slash-command-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 6px 8px;
+  border-radius: var(--sp-radius-sm);
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.slash-command-item:hover,
+.slash-command-item.is-selected {
+  background: var(--sp-color-accent, #007acc);
+  color: #ffffff;
+}
+
+.slash-command-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--sp-radius-sm);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--sp-color-fg-primary, #cccccc);
+  flex-shrink: 0;
+}
+
+.slash-command-item:hover .slash-command-icon,
+.slash-command-item.is-selected .slash-command-icon {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.slash-command-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.slash-command-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sp-color-fg-primary, #cccccc);
+}
+
+.slash-command-item:hover .slash-command-title,
+.slash-command-item.is-selected .slash-command-title {
+  color: #ffffff;
+}
+
+.slash-command-desc {
+  font-size: 11px;
+  color: var(--sp-color-fg-muted, #8b949e);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.slash-command-item:hover .slash-command-desc,
+.slash-command-item.is-selected .slash-command-desc {
+  color: rgba(255, 255, 255, 0.8);
+}

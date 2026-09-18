@@ -1,0 +1,14 @@
+/* Scratchpad — Main CSS entry point */
+
+/* Fonts (bundled locally — no external CDN required) */
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+
+/* Design tokens first */
+@import './tokens.css';
+
+/* Reset / base */
+@import './reset.css';

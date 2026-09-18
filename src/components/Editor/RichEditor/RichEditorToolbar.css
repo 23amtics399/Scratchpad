@@ -1,0 +1,521 @@
+/* Rich Editor Toolbar — IDE & Desktop Treatment */
+
+.rich-editor-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 3px;
+  padding: 4px 10px;
+  background: var(--sp-color-toolbar-bg);
+  border-bottom: 1px solid var(--sp-color-toolbar-border);
+  user-select: none;
+  z-index: var(--sp-z-toolbar, 10);
+  overflow: visible;
+  min-height: var(--sp-layout-toolbar-height, 40px);
+  container-type: inline-size;
+}
+
+.rich-editor-toolbar::-webkit-scrollbar {
+  display: none;
+}
+
+.rich-editor-toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.toolbar-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border-radius: var(--sp-radius-sm, 3px);
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--sp-color-fg-muted);
+  cursor: pointer;
+  transition: background-color var(--sp-anim-fast) var(--sp-anim-ease),
+              color var(--sp-anim-fast) var(--sp-anim-ease);
+}
+
+.toolbar-btn:hover:not(:disabled) {
+  background: var(--sp-color-surface-hover);
+  color: var(--sp-color-fg);
+}
+
+.toolbar-btn.is-active {
+  background: var(--sp-color-accent);
+  color: var(--sp-color-fg-on-accent, #ffffff);
+}
+
+.toolbar-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.toolbar-sep {
+  width: 1px;
+  height: 16px;
+  background: var(--sp-color-border);
+  margin: 0 3px;
+  flex-shrink: 0;
+}
+
+.toolbar-select {
+  background: var(--sp-color-surface);
+  color: var(--sp-color-fg);
+  border: 1px solid var(--sp-color-border);
+  border-radius: var(--sp-radius-sm, 3px);
+  padding: 2px 6px;
+  font-size: 12px;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  height: 26px;
+  transition: border-color var(--sp-anim-fast) var(--sp-anim-ease);
+}
+
+.toolbar-select:focus {
+  border-color: var(--sp-color-accent);
+}
+
+.toolbar-select option {
+  background: var(--sp-color-surface);
+  color: var(--sp-color-fg);
+}
+
+.toolbar-select--font {
+  width: 125px;
+}
+
+.toolbar-select--size {
+  width: 88px;
+}
+
+.toolbar-select--heading {
+  width: 105px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   MORE FORMATTING POPOVER
+   Desktop-native aesthetic: solid/opaque theme surface, subtle border,
+   soft shadow, restrained 6px radius, clear visual hierarchy.
+   ───────────────────────────────────────────────────────────── */
+.more-formatting-popover {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  width: 324px;
+  max-height: min(490px, calc(100vh - 90px));
+  background: var(--sp-color-surface);
+  border: 1px solid var(--sp-color-border-strong);
+  border-radius: var(--sp-radius-md, 6px);
+  box-shadow: var(--sp-shadow-lg);
+  z-index: var(--sp-z-dropdown, 1100);
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: popoverFadeIn var(--sp-anim-fast) var(--sp-anim-ease) both;
+}
+
+@keyframes popoverFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.popover-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: var(--sp-color-bg);
+  border-bottom: 1px solid var(--sp-color-border);
+  flex-shrink: 0;
+}
+
+.popover-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--sp-color-fg-muted);
+}
+
+.popover-close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border-radius: var(--sp-radius-sm, 3px);
+  border: none;
+  background: transparent;
+  color: var(--sp-color-fg-muted);
+  cursor: pointer;
+  transition: background-color var(--sp-anim-fast) var(--sp-anim-ease), color var(--sp-anim-fast) var(--sp-anim-ease);
+}
+
+.popover-close-btn:hover {
+  background: var(--sp-color-surface-hover);
+  color: var(--sp-color-fg);
+}
+
+.popover-close-btn:focus-visible {
+  outline: 2px solid var(--sp-color-accent);
+  outline-offset: 1px;
+}
+
+.popover-body {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.popover-footer {
+  flex-shrink: 0;
+  padding: 8px 12px;
+  background: var(--sp-color-surface);
+  border-top: 1px solid var(--sp-color-border);
+}
+
+.popover-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.popover-section-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--sp-color-fg-muted);
+}
+
+.popover-color-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.popover-row-label {
+  font-size: 12px;
+  color: var(--sp-color-fg);
+  min-width: 58px;
+}
+
+.color-swatches {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.color-swatch-btn {
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  border: 1px solid var(--sp-color-border);
+  cursor: pointer;
+  padding: 0;
+  transition: transform var(--sp-anim-fast) var(--sp-anim-ease), border-color var(--sp-anim-fast) var(--sp-anim-ease);
+}
+
+.color-swatch-btn:hover {
+  transform: scale(1.15);
+  border-color: var(--sp-color-accent);
+}
+
+.color-swatch-btn.is-active {
+  outline: 2px solid var(--sp-color-accent);
+  outline-offset: 1px;
+}
+
+.color-input-native {
+  width: 22px;
+  height: 20px;
+  padding: 0;
+  border: 1px solid var(--sp-color-border);
+  border-radius: 3px;
+  cursor: pointer;
+  background: transparent;
+}
+
+.popover-btn-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+
+.popover-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 5px 8px;
+  border-radius: var(--sp-radius-sm, 3px);
+  background: var(--sp-color-bg);
+  border: 1px solid var(--sp-color-border);
+  color: var(--sp-color-fg);
+  font-size: 11.5px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color var(--sp-anim-fast) var(--sp-anim-ease), border-color var(--sp-anim-fast) var(--sp-anim-ease);
+}
+
+.popover-btn:hover {
+  background: var(--sp-color-surface-hover);
+  border-color: var(--sp-color-border-strong);
+}
+
+.popover-btn.is-active {
+  background: var(--sp-color-accent);
+  color: var(--sp-color-fg-on-accent, #ffffff);
+  border-color: var(--sp-color-accent);
+}
+
+.spacing-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+}
+
+.spacing-label {
+  color: var(--sp-color-fg-muted);
+  min-width: 82px;
+}
+
+.spacing-chips {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex-wrap: wrap;
+}
+
+.chip-btn {
+  font-size: 10.5px;
+  font-family: inherit;
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid var(--sp-color-border);
+  background: var(--sp-color-bg);
+  color: var(--sp-color-fg);
+  cursor: pointer;
+  transition: all var(--sp-anim-fast) var(--sp-anim-ease);
+}
+
+.chip-btn:hover {
+  background: var(--sp-color-surface-hover);
+}
+
+.chip-btn.is-active {
+  background: var(--sp-color-accent);
+  color: var(--sp-color-fg-on-accent, #ffffff);
+  border-color: var(--sp-color-accent);
+}
+
+.chip-btn--reset {
+  color: var(--sp-color-fg-muted);
+  font-style: italic;
+}
+
+.popover-clear-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 7px 10px;
+  border-radius: var(--sp-radius-sm, 4px);
+  background: var(--sp-color-bg);
+  border: 1px solid var(--sp-color-border);
+  color: var(--sp-color-danger, #e5534b);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--sp-anim-fast) var(--sp-anim-ease);
+}
+
+.popover-clear-btn:hover {
+  background: var(--sp-color-danger-muted, rgba(229, 83, 75, 0.12));
+  border-color: var(--sp-color-danger, #e5534b);
+  color: var(--sp-color-danger, #e5534b);
+}
+
+.popover-find-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: var(--sp-radius-sm, 3px);
+  background: var(--sp-color-bg);
+  border: 1px solid var(--sp-color-border);
+  color: var(--sp-color-fg);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 6px;
+  transition: all var(--sp-anim-fast) var(--sp-anim-ease);
+}
+
+.popover-find-btn:hover {
+  background: var(--sp-color-surface-hover);
+  border-color: var(--sp-color-border-strong);
+}
+
+.popover-select-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.popover-select-row .toolbar-select {
+  flex: 1;
+}
+
+.popover-btn-group--grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+  gap: 4px;
+}
+
+/* By default, compact fallback sections are hidden on desktop */
+.popover-section--compact-font,
+.popover-section--compact-insert,
+.popover-section--compact-align,
+.popover-section--compact-lists,
+.popover-btn--compact-inline,
+.popover-find-btn--compact {
+  display: none;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   RESPONSIVE TOOLBAR BREAKPOINTS & CONTAINER QUERIES
+   Controls progressively move into More Formatting on narrower widths.
+   No control ever disappears without an accessible alternative.
+   ───────────────────────────────────────────────────────────── */
+
+@container (max-width: 900px) {
+  .toolbar-group--align,
+  .toolbar-sep--align {
+    display: none;
+  }
+  .popover-section--compact-align {
+    display: flex;
+  }
+}
+
+@container (max-width: 780px) {
+  .toolbar-group--lists,
+  .toolbar-sep--lists,
+  .toolbar-group--insert,
+  .toolbar-sep--insert {
+    display: none;
+  }
+  .popover-section--compact-lists,
+  .popover-section--compact-insert {
+    display: flex;
+  }
+}
+
+@container (max-width: 580px) {
+  .toolbar-group--font,
+  .toolbar-group--inline-extra,
+  .toolbar-group--find,
+  .toolbar-sep--find {
+    display: none;
+  }
+  .popover-section--compact-font,
+  .popover-find-btn--compact {
+    display: flex;
+  }
+  .popover-btn--compact-inline {
+    display: inline-flex;
+  }
+}
+
+/* Viewport fallback media queries */
+@media (max-width: 1024px) {
+  .toolbar-select--font {
+    width: 100px;
+  }
+  .toolbar-select--size {
+    width: 68px;
+  }
+  .toolbar-select--heading {
+    width: 95px;
+  }
+}
+
+@media (max-width: 850px) {
+  .toolbar-group--align,
+  .toolbar-sep--align,
+  .toolbar-group--lists,
+  .toolbar-sep--lists,
+  .toolbar-group--insert,
+  .toolbar-sep--insert {
+    display: none;
+  }
+  .popover-section--compact-align,
+  .popover-section--compact-lists,
+  .popover-section--compact-insert {
+    display: flex;
+  }
+}
+
+@media (max-width: 550px) {
+  .toolbar-group--font,
+  .toolbar-sep,
+  .toolbar-group--inline-extra,
+  .toolbar-group--find,
+  .toolbar-sep--find {
+    display: none;
+  }
+  .popover-section--compact-font,
+  .popover-find-btn--compact {
+    display: flex;
+  }
+  .popover-btn--compact-inline {
+    display: inline-flex;
+  }
+
+  .rich-editor-toolbar {
+    padding: 2px 6px;
+    gap: 4px;
+    justify-content: flex-start;
+  }
+
+  .toolbar-select--heading {
+    width: 90px;
+    font-size: 11px;
+    padding: 2px 4px;
+  }
+
+  .more-formatting-popover {
+    position: fixed;
+    top: auto;
+    bottom: 30px;
+    right: 8px;
+    left: 8px;
+    width: auto;
+    max-height: min(450px, calc(100vh - 60px));
+    border-radius: var(--sp-radius-md, 8px);
+  }
+}

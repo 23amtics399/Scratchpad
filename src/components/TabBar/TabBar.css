@@ -1,0 +1,171 @@
+.tabbar {
+  display: flex;
+  align-items: stretch;
+  height: var(--sp-tab-height, 36px);
+  background-color: var(--sp-color-tabbar-bg, #181818);
+  border-bottom: 1px solid var(--sp-color-border, #282828);
+  user-select: none;
+  overflow: hidden;
+  position: relative;
+}
+
+.tabbar__strip {
+  display: flex;
+  align-items: stretch;
+  flex: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE */
+}
+
+.tabbar__strip::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* Individual Tab */
+.tabbar__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-space-2, 6px);
+  padding: 0 var(--sp-space-3, 12px);
+  min-width: 120px;
+  max-width: 220px;
+  background-color: var(--sp-color-tab-bg, transparent);
+  color: var(--sp-color-tab-fg, var(--sp-color-fg-muted));
+  border-right: 1px solid var(--sp-color-border);
+  cursor: pointer;
+  font-family: var(--sp-font-sans);
+  font-size: var(--sp-font-size-xs, 12px);
+  font-weight: 400;
+  position: relative;
+  transition: background-color var(--sp-anim-fast, 120ms), color var(--sp-anim-fast, 120ms);
+}
+
+.tabbar__tab:hover {
+  background-color: var(--sp-color-surface-hover);
+  color: var(--sp-color-fg);
+}
+
+.tabbar__tab--active {
+  background-color: var(--sp-color-tab-bg-active, var(--sp-color-editor-bg)) !important;
+  color: var(--sp-color-tab-fg-active, var(--sp-color-fg)) !important;
+  font-weight: 500;
+  border-top: 2px solid var(--sp-color-accent);
+}
+
+.tabbar__tab-title {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tab-icon {
+  flex-shrink: 0;
+}
+
+.tab-icon--rich {
+  color: var(--sp-color-accent);
+}
+
+.tab-icon--md {
+  color: #3b82f6;
+}
+
+.tab-icon--plain {
+  color: var(--sp-color-fg-muted);
+}
+
+/* Tab Close Button */
+.tabbar__tab-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  border-radius: 3px;
+  color: var(--sp-color-fg-muted);
+  opacity: 0.65;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 2px;
+  transition: opacity var(--sp-anim-fast, 100ms), background-color var(--sp-anim-fast, 100ms), color var(--sp-anim-fast, 100ms);
+}
+
+.tabbar__tab:hover .tabbar__tab-close,
+.tabbar__tab--active .tabbar__tab-close {
+  opacity: 1;
+}
+
+.tabbar__tab-close:hover {
+  background-color: var(--sp-color-surface-hover);
+  color: var(--sp-color-fg);
+}
+
+/* Quick New Tab Button */
+.tabbar__new-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  background: transparent;
+  border: none;
+  color: var(--sp-color-fg-muted);
+  cursor: pointer;
+  transition: color var(--sp-anim-fast, 100ms), background-color var(--sp-anim-fast, 100ms);
+}
+
+.tabbar__new-btn:hover {
+  background-color: var(--sp-color-surface-hover);
+  color: var(--sp-color-fg);
+}
+
+/* Scroll navigation buttons */
+.tabbar__scroll-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  background-color: var(--sp-color-tabbar-bg);
+  border: none;
+  color: var(--sp-color-fg-muted);
+  cursor: pointer;
+  z-index: 2;
+  transition: color var(--sp-anim-fast, 100ms);
+}
+
+.tabbar__scroll-btn:hover {
+  color: var(--sp-color-fg);
+}
+
+.tabbar__scroll-btn--left {
+  border-right: 1px solid var(--sp-color-border);
+}
+
+.tabbar__scroll-btn--right {
+  border-left: 1px solid var(--sp-color-border, #282828);
+}
+
+/* Restore sidebar button when collapsed */
+.tabbar__restore-sidebar-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  background: transparent;
+  border: none;
+  border-right: 1px solid var(--sp-color-border);
+  color: var(--sp-color-fg-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all var(--sp-anim-fast, 120ms);
+}
+
+.tabbar__restore-sidebar-btn:hover {
+  background-color: var(--sp-color-surface-hover);
+  color: var(--sp-color-fg);
+}
+

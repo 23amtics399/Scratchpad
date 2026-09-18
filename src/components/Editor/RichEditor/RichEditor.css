@@ -1,0 +1,294 @@
+.rich-editor {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: var(--sp-color-editor-bg);
+  color: var(--sp-color-editor-fg);
+  position: relative;
+  overflow: hidden;
+}
+
+.rich-editor-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--sp-color-fg-muted);
+  font-size: 14px;
+}
+
+/* Content Area */
+.rich-editor-content-wrapper {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px 48px;
+  display: flex;
+  justify-content: center;
+}
+
+.rich-editor-content {
+  width: 100%;
+  max-width: 850px;
+  min-height: 100%;
+  outline: none;
+}
+
+/* ProseMirror Typography & Document Styling */
+.ProseMirror {
+  outline: none;
+  font-family: var(--sp-editor-default-font, var(--sp-font-body, 'Inter', -apple-system, sans-serif));
+  font-size: var(--sp-editor-default-size, 16px);
+  line-height: var(--sp-editor-default-line-height, 1.7);
+  color: var(--sp-color-editor-fg, var(--sp-color-fg));
+  min-height: 400px;
+  word-wrap: break-word;
+}
+
+/* Headings */
+.ProseMirror h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 1.6em 0 0.6em;
+  color: var(--sp-color-editor-fg, var(--sp-color-fg));
+}
+
+.ProseMirror h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 1.4em 0 0.5em;
+  color: var(--sp-color-editor-fg, var(--sp-color-fg));
+}
+
+.ProseMirror h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 1.2em 0 0.4em;
+  color: var(--sp-color-editor-fg, var(--sp-color-fg));
+}
+
+.ProseMirror h4,
+.ProseMirror h5,
+.ProseMirror h6 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 1em 0 0.4em;
+}
+
+.ProseMirror p {
+  margin: 0.8em 0;
+}
+
+/* Lists */
+.ProseMirror ul,
+.ProseMirror ol {
+  padding-left: 24px;
+  margin: 0.8em 0;
+}
+
+.ProseMirror li {
+  margin: 0.3em 0;
+}
+
+/* Task Lists */
+.ProseMirror ul[data-type="taskList"] {
+  list-style: none;
+  padding: 0;
+  margin: 0.8em 0;
+}
+
+.ProseMirror li[data-type="taskItem"] {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0.3em 0;
+}
+
+.ProseMirror li[data-type="taskItem"] > label {
+  user-select: none;
+  margin-top: 3px;
+}
+
+.ProseMirror li[data-type="taskItem"] > label input[type="checkbox"] {
+  accent-color: var(--sp-color-accent, #007acc);
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+}
+
+.ProseMirror li[data-type="taskItem"] > div {
+  flex: 1;
+}
+
+.ProseMirror li[data-type="taskItem"][data-checked="true"] > div {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* Blockquote */
+.ProseMirror blockquote {
+  border-left: 3px solid var(--sp-color-accent, #007acc);
+  padding-left: 16px;
+  margin: 1.2em 0;
+  font-style: italic;
+  color: var(--sp-color-fg-muted, #8b949e);
+}
+
+/* Horizontal Rule */
+.ProseMirror hr {
+  border: none;
+  border-top: 1px solid var(--sp-color-border);
+  margin: 2em 0;
+}
+
+/* Inline Code */
+.ProseMirror code:not(pre code) {
+  background: var(--sp-color-surface-hover);
+  color: var(--sp-color-accent);
+  padding: 2px 5px;
+  border-radius: var(--sp-radius-sm, 4px);
+  font-family: var(--sp-font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.88em;
+}
+
+/* Highlights */
+.ProseMirror mark {
+  background-color: rgba(255, 213, 0, 0.3);
+  color: inherit;
+  padding: 1px 3px;
+  border-radius: 2px;
+}
+
+/* Links */
+.ProseMirror a {
+  color: var(--sp-color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+/* Tables */
+.ProseMirror table {
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  width: 100%;
+  overflow: hidden;
+  table-layout: fixed;
+  border-radius: var(--sp-radius-md);
+  border: 1px solid var(--sp-color-border);
+  transition: box-shadow 0.2s ease, outline 0.2s ease;
+}
+
+.ProseMirror table.has-active-table {
+  outline: 1.5px solid var(--sp-color-accent-subtle, rgba(0, 102, 204, 0.25));
+  outline-offset: 2px;
+}
+
+.ProseMirror th,
+.ProseMirror td {
+  border: 1px solid var(--sp-color-border);
+  padding: 8px 12px;
+  vertical-align: top;
+  box-sizing: border-box;
+  position: relative;
+  transition: background-color 0.12s ease;
+}
+
+.ProseMirror th {
+  font-weight: 600;
+  text-align: left;
+  background-color: var(--sp-color-surface-hover);
+}
+
+.ProseMirror th.has-active-cell,
+.ProseMirror td.has-active-cell {
+  background-color: var(--sp-color-accent-subtle, rgba(0, 102, 204, 0.07));
+  box-shadow: inset 0 0 0 1.5px var(--sp-color-accent, #007acc);
+  z-index: 1;
+}
+
+.ProseMirror .selectedCell:after {
+  z-index: 2;
+  position: absolute;
+  content: "";
+  left: 0; right: 0; top: 0; bottom: 0;
+  background: rgba(0, 122, 204, 0.2);
+  pointer-events: none;
+}
+
+/* Custom Border Overrides on Table Cells */
+.ProseMirror th[data-border-top="none"],
+.ProseMirror td[data-border-top="none"] {
+  border-top: none !important;
+}
+.ProseMirror th[data-border-bottom="none"],
+.ProseMirror td[data-border-bottom="none"] {
+  border-bottom: none !important;
+}
+.ProseMirror th[data-border-left="none"],
+.ProseMirror td[data-border-left="none"] {
+  border-left: none !important;
+}
+.ProseMirror th[data-border-right="none"],
+.ProseMirror td[data-border-right="none"] {
+  border-right: none !important;
+}
+
+/* Column Resize Discoverability */
+.ProseMirror.resize-cursor {
+  cursor: col-resize !important;
+}
+
+.ProseMirror .column-resize-handle {
+  position: absolute;
+  right: -4px;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  background-color: var(--sp-color-accent, #007acc);
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 20;
+  transition: opacity 0.1s ease;
+}
+
+/* Row Resize Discoverability */
+.ProseMirror.row-resize-cursor,
+body.row-resizing-active,
+body.row-resizing-active * {
+  cursor: row-resize !important;
+}
+
+.table-row-resize-handle {
+  position: fixed;
+  height: 4px;
+  background-color: var(--sp-color-accent, #007acc);
+  opacity: 0.75;
+  pointer-events: none;
+  z-index: var(--sp-z-dropdown, 1100);
+  box-shadow: 0 0 3px var(--sp-color-accent, #007acc);
+  border-radius: 2px;
+}
+
+.table-row-resize-guide {
+  position: fixed;
+  height: 2px;
+  background-color: var(--sp-color-accent, #007acc);
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: var(--sp-z-modal, 1300);
+  box-shadow: 0 0 6px var(--sp-color-accent, #007acc);
+}
+
+/* Placeholder */
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: var(--sp-color-fg-subtle, #6e7681);
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+

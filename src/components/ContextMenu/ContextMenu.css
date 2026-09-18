@@ -1,0 +1,91 @@
+.context-menu {
+  position: fixed;
+  z-index: var(--sp-z-menu, 1100);
+  min-width: 180px;
+  max-width: 280px;
+  padding: var(--sp-space-1, 4px);
+  background-color: var(--sp-color-surface, #1e1e1e);
+  border: 1px solid var(--sp-color-border, #333333);
+  border-radius: var(--sp-radius-md, 6px);
+  box-shadow: var(--sp-shadow-lg, 0 10px 25px -5px rgba(0, 0, 0, 0.5));
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  user-select: none;
+  animation: contextMenuFadeIn var(--sp-transition-fast, 120ms) ease-out;
+}
+
+@keyframes contextMenuFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.context-menu__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--sp-space-2, 6px) var(--sp-space-3, 10px);
+  font-family: var(--sp-font-sans);
+  font-size: var(--sp-font-size-sm, 13px);
+  font-weight: 400;
+  color: var(--sp-color-text, #e0e0e0);
+  background: transparent;
+  border: none;
+  border-radius: var(--sp-radius-sm, 4px);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color var(--sp-transition-fast, 120ms), color var(--sp-transition-fast, 120ms);
+}
+
+.context-menu__item:hover:not(:disabled),
+.context-menu__item--focused {
+  background-color: var(--sp-color-surface-hover, rgba(255, 255, 255, 0.08));
+  color: var(--sp-color-text-bright, #ffffff);
+  outline: none;
+}
+
+.context-menu__item--danger {
+  color: var(--sp-color-danger, #ef4444);
+}
+
+.context-menu__item--danger:hover:not(:disabled),
+.context-menu__item--danger.context-menu__item--focused {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #ff6b6b;
+}
+
+.context-menu__item:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.context-menu__item-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.context-menu__item-shortcut {
+  margin-left: var(--sp-space-4, 16px);
+  font-family: var(--sp-font-mono);
+  font-size: var(--sp-font-size-xs, 11px);
+  color: var(--sp-color-text-muted, #888888);
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.context-menu__separator {
+  height: 1px;
+  background-color: var(--sp-color-border, #333333);
+  margin: var(--sp-space-1, 4px) 0;
+}

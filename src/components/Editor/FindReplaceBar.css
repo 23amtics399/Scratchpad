@@ -1,0 +1,128 @@
+/* Find & Replace Floating Bar */
+.find-replace-bar {
+  position: absolute;
+  top: 42px;
+  right: 24px;
+  z-index: var(--sp-z-dropdown, 1100);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 10px;
+  background: var(--sp-color-dialog-bg, var(--sp-color-surface));
+  border: 1px solid var(--sp-color-border-strong, var(--sp-color-border));
+  border-radius: var(--sp-radius-md, 6px);
+  box-shadow: var(--sp-shadow-md, 0 6px 16px rgba(0, 0, 0, 0.4));
+  animation: fr-slide-down 0.15s ease-out;
+}
+
+@keyframes fr-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.find-replace-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.find-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.find-replace-input {
+  width: 200px;
+  height: 26px;
+  padding: 2px 55px 2px 8px;
+  font-size: 12px;
+  font-family: inherit;
+  color: var(--sp-color-fg);
+  background: var(--sp-color-surface);
+  border: 1px solid var(--sp-color-border);
+  border-radius: var(--sp-radius-sm, 4px);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.find-replace-input:focus {
+  border-color: var(--sp-color-accent);
+}
+
+.find-match-count {
+  position: absolute;
+  right: 6px;
+  font-size: 11px;
+  color: var(--sp-color-fg-muted);
+  pointer-events: none;
+}
+
+.fr-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border-radius: var(--sp-radius-sm, 4px);
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--sp-color-fg-muted);
+  cursor: pointer;
+  transition: all 0.12s;
+}
+
+.fr-icon-btn:hover:not(:disabled) {
+  background: var(--sp-color-surface-hover);
+  color: var(--sp-color-fg);
+}
+
+.fr-icon-btn.is-active {
+  background: var(--sp-color-accent-muted);
+  border-color: var(--sp-color-accent);
+  color: var(--sp-color-accent);
+}
+
+.fr-icon-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.find-replace-row--replace .find-replace-input {
+  width: 200px;
+  padding-right: 8px;
+}
+
+.fr-text-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 26px;
+  padding: 0 8px;
+  font-size: 11px;
+  font-weight: 500;
+  border-radius: var(--sp-radius-sm, 4px);
+  background: var(--sp-color-surface);
+  border: 1px solid var(--sp-color-border);
+  color: var(--sp-color-fg);
+  cursor: pointer;
+  transition: all 0.12s;
+}
+
+.fr-text-btn:hover:not(:disabled) {
+  background: var(--sp-color-accent);
+  color: var(--sp-color-fg-on-accent, #ffffff);
+  border-color: transparent;
+}
+
+.fr-text-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}

@@ -1,0 +1,133 @@
+/* Image NodeView Wrapper */
+.editor-image-wrapper {
+  margin: var(--sp-space-4) 0;
+  display: flex;
+}
+
+.editor-image-wrapper--center {
+  justify-content: center;
+}
+
+.editor-image-wrapper--left {
+  justify-content: flex-start;
+}
+
+.editor-image-wrapper--right {
+  justify-content: flex-end;
+}
+
+.editor-image-wrapper--full {
+  width: 100%;
+}
+
+.editor-image-container {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.editor-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--sp-radius-md);
+  border: 1px solid var(--sp-color-border-subtle, rgba(255, 255, 255, 0.1));
+  box-shadow: var(--sp-shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.editor-image-wrapper--selected .editor-image {
+  outline: 2px solid var(--sp-color-accent, #007acc);
+  outline-offset: 2px;
+}
+
+.editor-image-placeholder {
+  padding: 32px 48px;
+  background: var(--sp-color-bg-secondary, #252526);
+  border: 1px dashed var(--sp-color-border-default, #3c3c3c);
+  border-radius: var(--sp-radius-md);
+  color: var(--sp-color-fg-muted, #8b949e);
+  font-size: 13px;
+}
+
+/* Image Toolbar */
+.editor-image-toolbar {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  background: var(--sp-color-menu-bg, var(--sp-color-surface));
+  border: 1px solid var(--sp-color-border);
+  border-radius: var(--sp-radius-md);
+  box-shadow: var(--sp-shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.15s ease;
+  z-index: 10;
+}
+
+.editor-image-container:hover .editor-image-toolbar,
+.editor-image-wrapper--selected .editor-image-toolbar {
+  opacity: 1;
+  visibility: visible;
+}
+
+.editor-image-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--sp-radius-sm);
+  background: transparent;
+  border: none;
+  color: var(--sp-color-fg-muted);
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.editor-image-btn:hover {
+  background: var(--sp-color-surface-hover);
+  color: var(--sp-color-fg);
+}
+
+.editor-image-btn--active {
+  background: var(--sp-color-accent-muted);
+  color: var(--sp-color-accent);
+}
+
+.editor-image-btn--danger:hover {
+  background: var(--sp-color-danger-muted);
+  color: var(--sp-color-danger);
+}
+
+.editor-image-btn-sep {
+  width: 1px;
+  height: 14px;
+  background: var(--sp-color-border);
+  margin: 0 2px;
+}
+
+/* Caption */
+.editor-image-caption {
+  margin-top: 6px;
+  text-align: center;
+}
+
+.editor-image-caption-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  text-align: center;
+  font-size: var(--sp-font-size-xs, 12px);
+  color: var(--sp-color-fg-muted);
+  font-style: italic;
+  outline: none;
+}
+
+.editor-image-caption-input:focus {
+  color: var(--sp-color-fg);
+}
