@@ -203,8 +203,8 @@ Inspecting `dist/index.html` (the initial HTTP response prior to client JavaScri
 - **Robots Directive:** `<meta name="robots" content="index, follow" />`
 - **Canonical URL:** `<link rel="canonical" href="https://scratchpad.sji.one/" />`
 - **Theme Color:** `<meta name="theme-color" content="#0f6cbd" />`
-- **Open Graph:** Full suite with 1200×630 image dimensions matching canonical URL.
-- **Twitter Cards:** `twitter:card` set to `summary_large_image`.
+- **Open Graph Image:** `https://scratchpad.sji.one/og-image.jpg` (`image/jpeg`, 1200×630)
+- **Twitter Cards:** `twitter:card` set to `summary_large_image`, `twitter:image` pointing to `https://scratchpad.sji.one/og-image.jpg`.
 
 ### 4.2 Schema.org JSON-LD Structured Data
 Valid JSON-LD verified in head:
@@ -226,7 +226,7 @@ Valid JSON-LD verified in head:
         "price": "0",
         "priceCurrency": "USD"
       },
-      "image": "https://scratchpad.sji.one/og-image.png",
+      "image": "https://scratchpad.sji.one/og-image.jpg",
       "publisher": {
         "@id": "https://sji.one/#organization"
       }
@@ -288,7 +288,7 @@ During implementation, live HTTP requests were made to verify the existence and 
 ```ini
 # Security & HSTS for all routes
 /*
-  Strict-Transport-Security: max-age=31536000
+  Strict-Transport-Security: max-age=63072000; includeSubDomains
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN

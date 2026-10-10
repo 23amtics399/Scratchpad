@@ -261,6 +261,7 @@ describe('Contextual Table Toolbar UX & Table Controls', () => {
     fireEvent.click(document.getElementById('welcome-create-rich-doc')!)
 
     await waitFor(() => {
+      expect(document.querySelector('.ProseMirror')).toBeInTheDocument()
       expect(screen.getByTitle('Insert Table (3x3)')).toBeInTheDocument()
     })
     fireEvent.click(screen.getByTitle('Insert Table (3x3)'))

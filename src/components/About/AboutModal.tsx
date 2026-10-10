@@ -96,15 +96,6 @@ export function AboutModal({ isOpen, onClose }: AboutModalProps) {
                 <span>Scratchpad on SJI</span>
                 <ExternalLink size={12} />
               </a>
-              <a
-                href="https://github.com/23amtics399/Scratchpad"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="about-modal__link-badge"
-              >
-                <span>GitHub Repository</span>
-                <ExternalLink size={12} />
-              </a>
             </div>
           </section>
 

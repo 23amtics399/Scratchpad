@@ -51,7 +51,10 @@ describe('SEO, Indexability, Social Sharing & Static Assets', () => {
       expect(htmlContent).toContain('<meta property="og:type" content="website" />')
       expect(htmlContent).toContain('<meta property="og:site_name" content="Scratchpad" />')
       expect(htmlContent).toContain(
-        '<meta property="og:image" content="https://scratchpad.sji.one/og-image.png" />'
+        '<meta property="og:image" content="https://scratchpad.sji.one/og-image.jpg" />'
+      )
+      expect(htmlContent).toContain(
+        '<meta property="og:image:type" content="image/jpeg" />'
       )
       expect(htmlContent).toContain('<meta property="og:image:width" content="1200" />')
       expect(htmlContent).toContain('<meta property="og:image:height" content="630" />')
@@ -64,7 +67,7 @@ describe('SEO, Indexability, Social Sharing & Static Assets', () => {
         '<meta name="twitter:title" content="Scratchpad — Free Local-First Writing Workspace | SJI" />'
       )
       expect(htmlContent).toContain(
-        '<meta name="twitter:image" content="https://scratchpad.sji.one/og-image.png" />'
+        '<meta name="twitter:image" content="https://scratchpad.sji.one/og-image.jpg" />'
       )
     })
 
@@ -84,6 +87,7 @@ describe('SEO, Indexability, Social Sharing & Static Assets', () => {
       expect(webApp).toBeDefined()
       expect(webApp.name).toBe('Scratchpad')
       expect(webApp.url).toBe('https://scratchpad.sji.one/')
+      expect(webApp.image).toBe('https://scratchpad.sji.one/og-image.jpg')
       expect(webApp.applicationCategory).toBe('ProductivityApplication')
       expect(webApp.offers.price).toBe('0')
 
@@ -167,7 +171,7 @@ describe('SEO, Indexability, Social Sharing & Static Assets', () => {
       const headersPath = path.join(rootDir, 'public', '_headers')
       expect(fs.existsSync(headersPath)).toBe(true)
       const headers = fs.readFileSync(headersPath, 'utf-8')
-      expect(headers).toContain('Strict-Transport-Security: max-age=31536000')
+      expect(headers).toContain('Strict-Transport-Security: max-age=63072000; includeSubDomains')
       expect(headers).toContain('X-Content-Type-Options: nosniff')
       expect(headers).toContain('Referrer-Policy: strict-origin-when-cross-origin')
       expect(headers).toContain('X-Frame-Options: SAMEORIGIN')
@@ -323,6 +327,7 @@ describe('SEO, Indexability, Social Sharing & Static Assets', () => {
         'href',
         'https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API'
       )
+      expect(screen.queryByRole('link', { name: /GitHub Repository/i })).not.toBeInTheDocument()
 
       // Close button
       fireEvent.click(screen.getByRole('button', { name: 'Done' }))
