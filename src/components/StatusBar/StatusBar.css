@@ -82,6 +82,12 @@
   text-transform: capitalize;
 }
 
+.statusbar__sji-link {
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
 .statusbar__save-icon {
   color: var(--sp-color-success, #86efac);
 }

@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Not Found — Scratchpad | SJI</title>
+    <meta name="description" content="The requested page does not exist on Scratchpad. Return to your local-first writing workspace." />
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href="https://scratchpad.sji.one/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <style>
+      :root {
+        --bg: #0b0f19;
+        --surface: #111827;
+        --border: #1f2937;
+        --text: #f3f4f6;
+        --text-muted: #9ca3af;
+        --accent: #0f6cbd;
+        --accent-hover: #1e88e5;
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #f8fafc;
+          --surface: #ffffff;
+          --border: #e2e8f0;
+          --text: #0f172a;
+          --text-muted: #64748b;
+          --accent: #0f6cbd;
+          --accent-hover: #0c5394;
+        }
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        line-height: 1.6;
+      }
+      .card {
+        background-color: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 2.5rem;
+        max-width: 540px;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      }
+      .logo {
+        display: inline-flex;
+        margin-bottom: 1.25rem;
+      }
+      h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+      }
+      p {
+        color: var(--text-muted);
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        justify-content: center;
+        margin-bottom: 2rem;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.65rem 1.25rem;
+        border-radius: 6px;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.15s ease-in-out;
+      }
+      .btn-primary {
+        background-color: var(--accent);
+        color: #ffffff;
+      }
+      .btn-primary:hover {
+        background-color: var(--accent-hover);
+      }
+      .btn-secondary {
+        background-color: transparent;
+        color: var(--text);
+        border: 1px solid var(--border);
+      }
+      .btn-secondary:hover {
+        background-color: rgba(125, 125, 125, 0.08);
+      }
+      .footer-links {
+        border-top: 1px solid var(--border);
+        padding-top: 1.25rem;
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+      }
+      .footer-links a {
+        color: var(--accent);
+        text-decoration: none;
+        margin: 0 0.35rem;
+      }
+      .footer-links a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <div class="logo">
+        <svg width="48" height="48" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect width="32" height="32" rx="6" fill="#0f6cbd"/>
+          <path d="M9 8h14M9 13h10M9 18h12M9 23h8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h1>404 — Page Not Found</h1>
+      <p>The page you requested does not exist. Scratchpad operates as a local-first workspace from the root address.</p>
+      <div class="actions">
+        <a href="/" class="btn btn-primary">Return to Scratchpad</a>
+        <a href="https://sji.one/products/scratchpad" class="btn btn-secondary">About Scratchpad</a>
+        <a href="https://sji.one/" class="btn btn-secondary">SJI Products</a>
+      </div>
+      <footer class="footer-links">
+        <span>Part of the SJI Network:</span>
+        <a href="https://sji.one/">SJI Home</a>·
+        <a href="https://tools.sji.one/">Tools</a>·
+        <a href="https://calc.sji.one/">Calc</a>·
+        <a href="https://time.sji.one/">Time</a>·
+        <a href="https://shorty.sji.one/">Shorty</a>·
+        <a href="https://tempbox.sji.one/">TempBox</a>
+      </footer>
+    </main>
+  </body>
+</html>

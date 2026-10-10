@@ -20,6 +20,8 @@ interface UIState {
   activePanel: 'explorer' | 'search' | 'favorites' | 'recent' | null
   contextMenu: ContextMenuState | null
   storageBanner: StorageBannerState | null
+  aboutOpen: boolean
+  shareOpen: boolean
 }
 
 interface ContextMenuState {
@@ -51,6 +53,10 @@ interface UIActions {
   closeSearch: () => void
   openSettings: () => void
   closeSettings: () => void
+  openAbout: () => void
+  closeAbout: () => void
+  openShare: () => void
+  closeShare: () => void
   setActivePanel: (panel: UIState['activePanel']) => void
   showContextMenu: (x: number, y: number, items: ContextMenuItem[]) => void
   closeContextMenu: () => void
@@ -85,6 +91,8 @@ export function UIProvider({ children }: UIProviderProps) {
     activePanel: 'explorer',
     contextMenu: null,
     storageBanner: null,
+    aboutOpen: false,
+    shareOpen: false,
   })
 
   const toggleSidebar = useCallback(() => {
@@ -131,6 +139,22 @@ export function UIProvider({ children }: UIProviderProps) {
     setState((s) => ({ ...s, settingsOpen: false }))
   }, [])
 
+  const openAbout = useCallback(() => {
+    setState((s) => ({ ...s, aboutOpen: true }))
+  }, [])
+
+  const closeAbout = useCallback(() => {
+    setState((s) => ({ ...s, aboutOpen: false }))
+  }, [])
+
+  const openShare = useCallback(() => {
+    setState((s) => ({ ...s, shareOpen: true }))
+  }, [])
+
+  const closeShare = useCallback(() => {
+    setState((s) => ({ ...s, shareOpen: false }))
+  }, [])
+
   const setActivePanel = useCallback((panel: UIState['activePanel']) => {
     setState((s) => ({ ...s, activePanel: panel }))
   }, [])
@@ -164,6 +188,10 @@ export function UIProvider({ children }: UIProviderProps) {
     closeSearch,
     openSettings,
     closeSettings,
+    openAbout,
+    closeAbout,
+    openShare,
+    closeShare,
     setActivePanel,
     showContextMenu,
     closeContextMenu,

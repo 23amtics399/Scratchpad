@@ -1,0 +1,23 @@
+{
+  "name": "Scratchpad — Free Local-First Writing Workspace",
+  "short_name": "Scratchpad",
+  "description": "A private, local-first document editor and workspace. No account, no cloud, no tracking.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f6cbd",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

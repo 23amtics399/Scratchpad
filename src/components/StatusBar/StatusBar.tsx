@@ -7,6 +7,8 @@ import {
   Moon,
   HardDrive,
   AlertTriangle,
+  Share2,
+  Info,
 } from 'lucide-react'
 import { useWorkspace } from '@/contexts/WorkspaceContext.js'
 import { useUI } from '@/contexts/UIContext.js'
@@ -15,7 +17,7 @@ import './StatusBar.css'
 
 export function StatusBar() {
   const { activeTabId, documents, folders, workspace } = useWorkspace()
-  const { toggleSidebar, sidebarOpen, storageBanner } = useUI()
+  const { toggleSidebar, sidebarOpen, storageBanner, openAbout, openShare } = useUI()
   const { settings, updateSettings } = useSettings()
 
   const activeDoc = useMemo(() => {
@@ -111,6 +113,48 @@ export function StatusBar() {
 
       {/* Right Section: Workspace & Preferences */}
       <div className="statusbar__section statusbar__section--right">
+        <button
+          id="statusbar-share-btn"
+          type="button"
+          className="statusbar__btn"
+          title="Share Scratchpad"
+          aria-label="Share Scratchpad"
+          onClick={openShare}
+        >
+          <Share2 size={12} />
+          <span className="statusbar__theme-text statusbar__hide-mobile">Share</span>
+        </button>
+
+        <span className="statusbar__divider" aria-hidden="true" />
+
+        <button
+          id="statusbar-about-btn"
+          type="button"
+          className="statusbar__btn"
+          title="About Scratchpad & Privacy"
+          aria-label="About Scratchpad"
+          onClick={openAbout}
+        >
+          <Info size={12} />
+          <span className="statusbar__theme-text statusbar__hide-mobile">About</span>
+        </button>
+
+        <span className="statusbar__divider" aria-hidden="true" />
+
+        <a
+          id="statusbar-sji-link"
+          href="https://sji.one/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="statusbar__btn statusbar__sji-link"
+          title="SJI — Focused Web Products for Everyday Work"
+          aria-label="SJI Web Products"
+        >
+          <span>SJI</span>
+        </a>
+
+        <span className="statusbar__divider statusbar__divider--desktop-only" aria-hidden="true" />
+
         <button
           id="statusbar-toggle-theme"
           type="button"

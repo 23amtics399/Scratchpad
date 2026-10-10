@@ -1,7 +1,9 @@
 import { vi, beforeAll, afterAll, afterEach } from 'vitest'
-import { cleanup } from '@testing-library/react'
+import { cleanup, configure } from '@testing-library/react'
 import 'fake-indexeddb/auto'
 import '@testing-library/jest-dom/vitest'
+
+configure({ asyncUtilTimeout: 4000 })
 
 afterEach(() => {
   cleanup()

@@ -9,3 +9,6 @@ export * from './Editor/index.js'
 export * from './Search/WorkspaceSearchModal.js'
 export * from './Settings/SettingsDialog.js'
 export * from './VersionHistory/VersionHistoryDrawer.js'
+export * from './About/AboutModal.js'
+export * from './Share/ShareModal.js'
+

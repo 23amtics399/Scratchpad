@@ -18,6 +18,8 @@ import {
   EditorPane,
   WorkspaceSearchModal,
   SettingsDialog,
+  AboutModal,
+  ShareModal,
 } from '@/components/index.js'
 import { StorageBanner } from './StorageBanner.js'
 import { OutlinePanel } from '@/components/Outline/OutlinePanel.js'
@@ -58,6 +60,10 @@ export function AppShell() {
     closeSearch,
     settingsOpen,
     closeSettings,
+    aboutOpen,
+    closeAbout,
+    shareOpen,
+    closeShare,
   } = useUI()
   const { settings, updateSettings } = useSettings()
   const { showToast } = useToast()
@@ -298,6 +304,8 @@ export function AppShell() {
       <CommandPalette />
       <WorkspaceSearchModal isOpen={searchOpen} onClose={closeSearch} />
       <SettingsDialog isOpen={settingsOpen} onClose={closeSettings} />
+      <AboutModal isOpen={aboutOpen} onClose={closeAbout} />
+      <ShareModal isOpen={shareOpen} onClose={closeShare} />
 
       {/* External File Drag & Drop Overlay */}
       {isDraggingFiles && (
@@ -321,7 +329,7 @@ export function AppShell() {
 
 function WelcomeScreen() {
   const { openDocument, createDocument, documents } = useWorkspace()
-  const { openCommandPalette } = useUI()
+  const { openCommandPalette, openAbout, openShare } = useUI()
 
   const recentDocs = documents.slice(0, 5)
 
@@ -335,7 +343,24 @@ function WelcomeScreen() {
           </svg>
         </div>
         <h1 className="welcome-screen__title">Scratchpad</h1>
-        <p className="welcome-screen__subtitle">Your local-first workspace</p>
+        <p className="welcome-screen__subtitle">
+          Free Local-First Writing Workspace |{' '}
+          <a
+            href="https://sji.one/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="welcome-screen__sji-link"
+            title="SJI Web Products"
+          >
+            SJI
+          </a>
+        </p>
+
+        <div className="welcome-screen__badges" aria-label="Privacy and storage highlights">
+          <span className="welcome-screen__badge">100% Offline & Private</span>
+          <span className="welcome-screen__badge">Zero Accounts</span>
+          <span className="welcome-screen__badge">IndexedDB Storage</span>
+        </div>
 
         <div className="welcome-screen__actions">
           <button
@@ -390,6 +415,57 @@ function WelcomeScreen() {
             </ul>
           </section>
         )}
+
+        <footer className="welcome-screen__footer" aria-label="Product navigation and ecosystem">
+          <div className="welcome-screen__footer-links">
+            <button
+              id="welcome-open-about"
+              type="button"
+              className="welcome-screen__footer-btn"
+              onClick={openAbout}
+            >
+              About & Privacy
+            </button>
+            <span className="welcome-screen__footer-sep" aria-hidden="true">·</span>
+            <button
+              id="welcome-open-share"
+              type="button"
+              className="welcome-screen__footer-btn"
+              onClick={openShare}
+            >
+              Share Scratchpad
+            </button>
+            <span className="welcome-screen__footer-sep" aria-hidden="true">·</span>
+            <a
+              id="welcome-link-sji-product"
+              href="https://sji.one/products/scratchpad"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="welcome-screen__footer-link"
+            >
+              Scratchpad on SJI
+            </a>
+            <span className="welcome-screen__footer-sep" aria-hidden="true">·</span>
+            <a
+              id="welcome-link-sji-home"
+              href="https://sji.one/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="welcome-screen__footer-link"
+            >
+              SJI Home
+            </a>
+          </div>
+
+          <div className="welcome-screen__network" aria-label="SJI network web products">
+            <span className="welcome-screen__network-label">More SJI products:</span>
+            <a href="https://tools.sji.one/" target="_blank" rel="noopener noreferrer" className="welcome-screen__network-link">Tools</a>
+            <a href="https://calc.sji.one/" target="_blank" rel="noopener noreferrer" className="welcome-screen__network-link">Calc</a>
+            <a href="https://time.sji.one/" target="_blank" rel="noopener noreferrer" className="welcome-screen__network-link">Time</a>
+            <a href="https://shorty.sji.one/" target="_blank" rel="noopener noreferrer" className="welcome-screen__network-link">Shorty</a>
+            <a href="https://tempbox.sji.one/" target="_blank" rel="noopener noreferrer" className="welcome-screen__network-link">TempBox</a>
+          </div>
+        </footer>
       </div>
     </div>
   )

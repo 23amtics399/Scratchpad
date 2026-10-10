@@ -19,6 +19,9 @@ import {
   Printer,
   History,
   Info,
+  Share2,
+  Shield,
+  Globe,
 } from 'lucide-react'
 import { useWorkspace } from '@/contexts/WorkspaceContext.js'
 import { useUI } from '@/contexts/UIContext.js'
@@ -50,6 +53,8 @@ export function MenuBar() {
     openCommandPalette,
     openSettings,
     openSearch,
+    openAbout,
+    openShare,
   } = useUI()
 
   const { settings, updateSettings } = useSettings()
@@ -761,18 +766,75 @@ export function MenuBar() {
               <div className="menubar__dropdown-separator" />
 
               <button
+                id="menu-item-share"
+                type="button"
+                className="menubar__dropdown-item"
+                role="menuitem"
+                onClick={() => {
+                  openShare()
+                  setOpenMenu(null)
+                }}
+              >
+                <Share2 size={14} />
+                <span>Share Scratchpad...</span>
+              </button>
+
+              <button
+                id="menu-item-privacy"
+                type="button"
+                className="menubar__dropdown-item"
+                role="menuitem"
+                onClick={() => {
+                  openAbout()
+                  setOpenMenu(null)
+                }}
+              >
+                <Shield size={14} />
+                <span>Privacy & Offline Storage</span>
+              </button>
+
+              <button
                 id="menu-item-about"
                 type="button"
                 className="menubar__dropdown-item"
                 role="menuitem"
                 onClick={() => {
-                  alert('Scratchpad v1.0.0\nLocal-first, private document editor\nAll data stored in your browser IndexedDB.')
+                  openAbout()
                   setOpenMenu(null)
                 }}
               >
                 <HelpCircle size={14} />
                 <span>About Scratchpad</span>
               </button>
+
+              <div className="menubar__dropdown-separator" />
+              <div className="menubar__dropdown-header">SJI Network</div>
+
+              <a
+                id="menu-item-sji-product"
+                href="https://sji.one/products/scratchpad"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="menubar__dropdown-item"
+                role="menuitem"
+                onClick={() => setOpenMenu(null)}
+              >
+                <Globe size={14} />
+                <span>Scratchpad on SJI</span>
+              </a>
+
+              <a
+                id="menu-item-sji-home"
+                href="https://sji.one/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="menubar__dropdown-item"
+                role="menuitem"
+                onClick={() => setOpenMenu(null)}
+              >
+                <Globe size={14} />
+                <span>Explore SJI Products</span>
+              </a>
             </div>
           )}
         </div>

@@ -124,13 +124,13 @@ npm run preview
 
 ## Verification & Testing
 
-Scratchpad includes a comprehensive automated test suite covering unit logic, repositories, overlay positioning, table mechanics, and full editor UX workflows.
+Scratchpad includes a comprehensive automated test suite covering unit logic, repositories, overlay positioning, table mechanics, full editor UX workflows, and SEO/indexability verification.
 
 ```bash
 # Run TypeScript type check
 npm run type-check
 
-# Run automated tests (106 tests across 11 test suites)
+# Run automated tests (128 tests across 12 test suites)
 npm run test
 
 # Run ESLint validation
@@ -139,6 +139,18 @@ npm run lint
 # Check code formatting
 npm run format:check
 ```
+
+---
+
+## Deployment & SEO Architecture
+
+Scratchpad is deployed as a static application on Cloudflare Pages:
+- **Canonical Domain**: `https://scratchpad.sji.one/`
+- **Initial HTML Crawlability**: Static semantic pre-rendered shell with descriptive `<h1>`, `<h2>` tags, rich copy, and ecosystem links hydrated by React upon client initialization.
+- **Search Engine Discovery**: Dedicated static `robots.txt` and `sitemap.xml` with canonical directives.
+- **Social Metadata**: Real 1200×630 Open Graph / Twitter image cards (`og-image.png`, `og-image.jpg`) and valid Schema.org JSON-LD.
+- **Error Handling**: Dedicated branded `404.html` preventing soft-404 SPA fallback traps.
+- **Edge Security**: HSTS (`Strict-Transport-Security: max-age=31536000`), `X-Content-Type-Options: nosniff`, and custom MIME typing configured via `_headers`.
 
 ---
 

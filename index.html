@@ -2,19 +2,154 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Scratchpad — a local-first, browser-based document editor with IDE-style workspace. All your notes stored privately in your browser." />
+    <title>Scratchpad — Free Local-First Writing Workspace | SJI</title>
+    <meta
+      name="description"
+      content="A private, local-first writing workspace with rich text, Markdown, and code editing. Stored securely in your browser with zero accounts and no tracking."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://scratchpad.sji.one/" />
     <meta name="theme-color" content="#0f6cbd" />
+
+    <!-- Icons & Manifest -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
     <!-- Open Graph -->
-    <meta property="og:title" content="Scratchpad" />
-    <meta property="og:description" content="A local-first document editor. No account, no cloud, no backend." />
+    <meta property="og:title" content="Scratchpad — Free Local-First Writing Workspace | SJI" />
+    <meta
+      property="og:description"
+      content="A private, local-first writing workspace with rich text, Markdown, and code editing. Stored securely in your browser with zero accounts and no tracking."
+    />
+    <meta property="og:url" content="https://scratchpad.sji.one/" />
     <meta property="og:type" content="website" />
-    <!-- Preload fonts are handled by @fontsource imports in CSS -->
-    <title>Scratchpad</title>
+    <meta property="og:site_name" content="Scratchpad" />
+    <meta property="og:image" content="https://scratchpad.sji.one/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Scratchpad — Free Local-First Writing Workspace by SJI" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Scratchpad — Free Local-First Writing Workspace | SJI" />
+    <meta
+      name="twitter:description"
+      content="A private, local-first writing workspace with rich text, Markdown, and code editing. Stored securely in your browser with zero accounts and no tracking."
+    />
+    <meta name="twitter:image" content="https://scratchpad.sji.one/og-image.png" />
+    <meta name="twitter:image:alt" content="Scratchpad — Free Local-First Writing Workspace by SJI" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://scratchpad.sji.one/#webapp",
+            "name": "Scratchpad",
+            "url": "https://scratchpad.sji.one/",
+            "description": "A private, local-first writing workspace with rich text, Markdown, and code editing. Stored securely in your browser with zero accounts and no tracking.",
+            "applicationCategory": "ProductivityApplication",
+            "operatingSystem": "Any modern web browser",
+            "browserRequirements": "Requires JavaScript and IndexedDB support",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "image": "https://scratchpad.sji.one/og-image.png",
+            "publisher": {
+              "@id": "https://sji.one/#organization"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://scratchpad.sji.one/#website",
+            "url": "https://scratchpad.sji.one/",
+            "name": "Scratchpad",
+            "description": "Free Local-First Writing Workspace | SJI",
+            "publisher": {
+              "@id": "https://sji.one/#organization"
+            }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://sji.one/#organization",
+            "name": "SJI",
+            "url": "https://sji.one/",
+            "logo": "https://sji.one/favicon.svg"
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <!-- Initial crawlable semantic shell (hydrated by React upon boot) -->
+    <div id="root">
+      <div class="sp-prerender-shell" style="max-width: 860px; margin: 2rem auto; padding: 0 1.5rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #1e293b;">
+        <header style="border-bottom: 1px solid #e2e8f0; padding-bottom: 1rem; margin-bottom: 1.5rem;">
+          <h1 style="font-size: 2rem; font-weight: 700; color: #0f172a; margin-bottom: 0.5rem;">Scratchpad — Free Local-First Writing Workspace</h1>
+          <p style="font-size: 1.125rem; color: #475569;">A private, browser-based document workspace designed for focused writing, notes, and technical drafts. No accounts, no cloud dependencies, and complete privacy by default.</p>
+        </header>
+
+        <section style="margin-bottom: 2rem;">
+          <h2 style="font-size: 1.35rem; font-weight: 600; color: #0f172a; margin-bottom: 0.75rem;">100% Local-First & Zero-Account Architecture</h2>
+          <p style="margin-bottom: 1rem;">
+            Scratchpad stores all notes, documents, folders, and workspace configurations entirely within your browser's <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API" target="_blank" rel="noopener noreferrer" style="color: #0f6cbd; text-decoration: underline;">IndexedDB</a> storage via Dexie.js. Your writing never touches an external server, database, or analytics tracker. It loads instantly offline and continues to operate seamlessly without an internet connection.
+          </p>
+        </section>
+
+        <section style="margin-bottom: 2rem;">
+          <h2 style="font-size: 1.35rem; font-weight: 600; color: #0f172a; margin-bottom: 0.75rem;">Three Versatile Editing Modes</h2>
+          <ul style="list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem;">
+            <li style="margin-bottom: 0.5rem;"><strong>Rich Text Mode:</strong> WYSIWYG note taking powered by <a href="https://tiptap.dev/" target="_blank" rel="noopener noreferrer" style="color: #0f6cbd;">Tiptap</a> and ProseMirror. Includes headings, checklists, code blocks with syntax highlighting, and desktop-grade table controls with custom borders.</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Markdown Mode:</strong> Distraction-free Markdown writing with live syntax parsing and keyboard shortcuts powered by <a href="https://codemirror.net/" target="_blank" rel="noopener noreferrer" style="color: #0f6cbd;">CodeMirror 6</a>.</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Plain Text & Code Mode:</strong> Fast, clean code editing with syntax highlighting for JavaScript, TypeScript, Python, HTML, CSS, SQL, JSON, Rust, and more.</li>
+          </ul>
+        </section>
+
+        <section style="margin-bottom: 2rem;">
+          <h2 style="font-size: 1.35rem; font-weight: 600; color: #0f172a; margin-bottom: 0.75rem;">Workspace Management & Data Portability</h2>
+          <p style="margin-bottom: 1rem;">
+            Organize documents with nested folders, search instantly across titles and document contents, and track revisions with automatic version snapshots. Export notes anytime to Markdown (.md), HTML (.html), plain text (.txt), or portable JSON backups.
+          </p>
+        </section>
+
+        <footer style="border-top: 1px solid #e2e8f0; padding-top: 1.5rem; margin-top: 2rem; font-size: 0.875rem; color: #64748b;">
+          <p style="margin-bottom: 0.5rem;">
+            <strong>Publisher:</strong> <a href="https://sji.one/" style="color: #0f6cbd; text-decoration: none;">SJI</a> · 
+            <a href="https://sji.one/products/scratchpad" style="color: #0f6cbd; text-decoration: none;">Scratchpad Product Page</a>
+          </p>
+          <p style="margin-bottom: 0.5rem;">
+            <strong>More SJI Web Tools:</strong> 
+            <a href="https://tools.sji.one/" style="color: #0f6cbd; text-decoration: none;">Tools</a> · 
+            <a href="https://calc.sji.one/" style="color: #0f6cbd; text-decoration: none;">Calc</a> · 
+            <a href="https://time.sji.one/" style="color: #0f6cbd; text-decoration: none;">Time</a> · 
+            <a href="https://shorty.sji.one/" style="color: #0f6cbd; text-decoration: none;">Shorty</a> · 
+            <a href="https://tempbox.sji.one/" style="color: #0f6cbd; text-decoration: none;">TempBox</a>
+          </p>
+          <p>© 2026 SJI. Free local-first software for everyday work.</p>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Fallback for crawlers or environments with JavaScript disabled -->
+    <noscript>
+      <div style="max-width: 860px; margin: 2rem auto; padding: 0 1.5rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #1e293b;">
+        <section>
+          <h2>JavaScript Disabled</h2>
+          <p>Scratchpad is an interactive local-first application that requires JavaScript and browser IndexedDB to provide offline editing, table manipulation, and document storage. Please enable JavaScript to open your workspace.</p>
+          <p>Learn more about <a href="https://sji.one/products/scratchpad" style="color: #0f6cbd;">Scratchpad on SJI</a> or explore <a href="https://sji.one/" style="color: #0f6cbd;">SJI web products</a>.</p>
+        </section>
+      </div>
+    </noscript>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
