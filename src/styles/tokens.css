@@ -613,6 +613,11 @@
   --sp-color-bg-secondary:    var(--sp-color-surface);
   --sp-color-bg-dropdown:     var(--sp-color-menu-bg);
   --sp-color-fg-primary:      var(--sp-color-fg);
+  --sp-color-text-primary:    var(--sp-color-fg);
+  --sp-color-text-secondary:  var(--sp-color-fg-muted);
+  --sp-color-text-muted:      var(--sp-color-fg-muted);
+  --sp-color-bg-hover:        var(--sp-color-surface-hover);
+  --sp-color-accent-subtle:   var(--sp-color-accent-muted);
   --sp-color-border-subtle:   var(--sp-color-border);
   --sp-color-border-default:  var(--sp-color-border-strong);
 }

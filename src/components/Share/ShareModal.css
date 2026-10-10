@@ -1,28 +1,26 @@
 .share-modal-backdrop {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.55);
+  background-color: var(--sp-color-overlay, rgba(0, 0, 0, 0.6));
   backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: var(--sp-z-modal-backdrop, 1200);
   padding: 1rem;
 }
 
 .share-modal {
-  background-color: var(--sp-color-bg-primary, #ffffff);
-  color: var(--sp-color-text-primary, #1e293b);
-  border: 1px solid var(--sp-color-border, #e2e8f0);
+  background-color: var(--sp-color-dialog-bg, var(--sp-color-surface));
+  color: var(--sp-color-fg);
+  border: 1px solid var(--sp-color-border);
   border-radius: var(--sp-radius-lg, 12px);
   max-width: 520px;
   width: 100%;
   max-height: 90vh;
   display: flex;
   flex-direction: column;
-  box-shadow:
-    0 20px 25px -5px rgba(0, 0, 0, 0.2),
-    0 8px 10px -6px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--sp-shadow-xl, 0 20px 25px -5px rgba(0, 0, 0, 0.3));
   overflow: hidden;
   animation: shareModalFadeIn 0.15s ease-out;
 }
@@ -43,7 +41,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 1.25rem 1.5rem;
-  border-bottom: 1px solid var(--sp-color-border, #e2e8f0);
+  border-bottom: 1px solid var(--sp-color-border);
 }
 
 .share-modal__title-group {
@@ -53,26 +51,27 @@
 }
 
 .share-modal__header-icon {
-  color: var(--sp-color-accent, #0f6cbd);
+  color: var(--sp-color-accent);
 }
 
 .share-modal__title {
   font-size: 1.15rem;
   font-weight: 700;
+  color: var(--sp-color-fg);
   margin: 0;
   line-height: 1.2;
 }
 
 .share-modal__subtitle {
   font-size: 0.8125rem;
-  color: var(--sp-color-text-secondary, #64748b);
+  color: var(--sp-color-fg-muted);
   margin: 0.2rem 0 0 0;
 }
 
 .share-modal__close-btn {
   background: none;
   border: none;
-  color: var(--sp-color-text-secondary, #64748b);
+  color: var(--sp-color-fg-muted);
   cursor: pointer;
   padding: 0.35rem;
   border-radius: 6px;
@@ -85,8 +84,8 @@
 }
 
 .share-modal__close-btn:hover {
-  background-color: var(--sp-color-bg-hover, #f1f5f9);
-  color: var(--sp-color-text-primary, #0f172a);
+  background-color: var(--sp-color-surface-hover);
+  color: var(--sp-color-fg);
 }
 
 .share-modal__body {
@@ -95,6 +94,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  color: var(--sp-color-fg);
 }
 
 .share-modal__link-box {
@@ -106,17 +106,17 @@
 .share-modal__link-input {
   flex: 1;
   padding: 0.6rem 0.85rem;
-  background-color: var(--sp-color-bg-secondary, #f8fafc);
-  border: 1px solid var(--sp-color-border, #e2e8f0);
+  background-color: var(--sp-color-surface-hover, var(--sp-color-bg));
+  border: 1px solid var(--sp-color-border);
   border-radius: 6px;
   font-size: 0.875rem;
-  color: var(--sp-color-text-primary, #0f172a);
+  color: var(--sp-color-fg);
   font-family: inherit;
 }
 
 .share-modal__link-input:focus {
   outline: none;
-  border-color: var(--sp-color-accent, #0f6cbd);
+  border-color: var(--sp-color-accent);
 }
 
 .share-modal__copy-btn {
@@ -124,8 +124,8 @@
   align-items: center;
   gap: 0.4rem;
   padding: 0.6rem 1rem;
-  background-color: var(--sp-color-accent, #0f6cbd);
-  color: #ffffff;
+  background-color: var(--sp-color-accent);
+  color: var(--sp-color-fg-on-accent, #ffffff);
   border: none;
   border-radius: 6px;
   font-size: 0.875rem;
@@ -136,11 +136,12 @@
 }
 
 .share-modal__copy-btn:hover {
-  opacity: 0.9;
+  background-color: var(--sp-color-accent-hover);
 }
 
 .share-modal__copy-btn--copied {
-  background-color: #10b981;
+  background-color: var(--sp-color-success, #10b981);
+  color: var(--sp-color-fg-on-accent, #ffffff);
 }
 
 .share-modal__native-share-btn {
@@ -150,19 +151,19 @@
   gap: 0.5rem;
   width: 100%;
   padding: 0.65rem 1rem;
-  background-color: var(--sp-color-bg-secondary, #f8fafc);
-  border: 1px solid var(--sp-color-border, #e2e8f0);
+  background-color: var(--sp-color-surface-hover, var(--sp-color-bg));
+  border: 1px solid var(--sp-color-border);
   border-radius: 6px;
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--sp-color-accent, #0f6cbd);
+  color: var(--sp-color-accent);
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
 .share-modal__native-share-btn:hover {
-  background-color: var(--sp-color-accent-subtle, #e0f2fe);
-  border-color: var(--sp-color-accent, #0f6cbd);
+  background-color: var(--sp-color-accent-muted);
+  border-color: var(--sp-color-accent);
 }
 
 .share-modal__grid {
@@ -176,29 +177,29 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.65rem 0.85rem;
-  background-color: var(--sp-color-bg-secondary, #f8fafc);
-  border: 1px solid var(--sp-color-border, #e2e8f0);
+  background-color: var(--sp-color-surface-hover, var(--sp-color-bg));
+  border: 1px solid var(--sp-color-border);
   border-radius: 6px;
   font-size: 0.8125rem;
   font-weight: 500;
-  color: var(--sp-color-text-primary, #1e293b);
+  color: var(--sp-color-fg);
   text-decoration: none;
   transition: all 0.15s ease;
 }
 
 .share-modal__channel-item:hover {
-  border-color: var(--sp-color-accent, #0f6cbd);
-  background-color: var(--sp-color-bg-hover, #f1f5f9);
+  border-color: var(--sp-color-accent);
+  background-color: var(--sp-color-surface-active);
 }
 
 .share-modal__ext-icon {
-  color: var(--sp-color-text-secondary, #94a3b8);
+  color: var(--sp-color-fg-muted);
 }
 
 .share-modal__instagram-card {
   padding: 0.875rem;
-  background-color: var(--sp-color-bg-secondary, #f8fafc);
-  border: 1px solid var(--sp-color-border, #e2e8f0);
+  background-color: var(--sp-color-surface-hover, var(--sp-color-bg));
+  border: 1px solid var(--sp-color-border);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -218,12 +219,12 @@
 .share-modal__instagram-title {
   font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--sp-color-text-primary, #0f172a);
+  color: var(--sp-color-fg);
 }
 
 .share-modal__instagram-desc {
   font-size: 0.75rem;
-  color: var(--sp-color-text-secondary, #64748b);
+  color: var(--sp-color-fg-muted);
   line-height: 1.45;
   margin: 0;
 }
@@ -235,11 +236,11 @@
   gap: 0.4rem;
   padding: 0.4rem 0.75rem;
   background-color: transparent;
-  border: 1px solid var(--sp-color-border, #cbd5e1);
+  border: 1px solid var(--sp-color-border);
   border-radius: 5px;
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--sp-color-text-primary, #1e293b);
+  color: var(--sp-color-fg);
   cursor: pointer;
   transition: all 0.15s ease;
 }
@@ -253,15 +254,15 @@
   display: flex;
   justify-content: flex-end;
   padding: 0.85rem 1.5rem;
-  border-top: 1px solid var(--sp-color-border, #e2e8f0);
-  background-color: var(--sp-color-bg-secondary, #f8fafc);
+  border-top: 1px solid var(--sp-color-border);
+  background-color: var(--sp-color-surface-hover, var(--sp-color-bg));
 }
 
 .share-modal__done-btn {
   padding: 0.45rem 1rem;
-  background-color: var(--sp-color-bg-primary, #ffffff);
-  color: var(--sp-color-text-primary, #1e293b);
-  border: 1px solid var(--sp-color-border, #cbd5e1);
+  background-color: var(--sp-color-dialog-bg, var(--sp-color-surface));
+  color: var(--sp-color-fg);
+  border: 1px solid var(--sp-color-border);
   border-radius: 6px;
   font-size: 0.875rem;
   font-weight: 500;
@@ -270,5 +271,5 @@
 }
 
 .share-modal__done-btn:hover {
-  background-color: var(--sp-color-bg-hover, #f1f5f9);
+  background-color: var(--sp-color-surface-hover);
 }
