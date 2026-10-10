@@ -129,6 +129,70 @@ Connection: keep-alive
 
 ---
 
+## 3b. Live Production Domain Verification (`https://scratchpad.sji.one/`)
+
+Following deployment of commit `0f51197` to `origin/main`, all endpoints were tested against the live Cloudflare production domain:
+
+### Live Discovery & Asset Responses
+```bash
+# 1. robots.txt
+$ curl -sI https://scratchpad.sji.one/robots.txt
+HTTP/1.1 200 OK
+Content-Type: text/plain; charset=utf-8
+Content-Length: 72
+Strict-Transport-Security: max-age=31536000
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+Cache-Control: public, max-age=86400
+
+# 2. sitemap.xml
+$ curl -sI https://scratchpad.sji.one/sitemap.xml
+HTTP/1.1 200 OK
+Content-Type: application/xml; charset=utf-8
+Content-Length: 270
+Strict-Transport-Security: max-age=31536000
+
+# 3. og-image.png
+$ curl -sI https://scratchpad.sji.one/og-image.png
+HTTP/1.1 200 OK
+Content-Type: image/png
+Content-Length: 853746
+Strict-Transport-Security: max-age=31536000
+
+# 4. apple-touch-icon.png
+$ curl -sI https://scratchpad.sji.one/apple-touch-icon.png
+HTTP/1.1 200 OK
+Content-Type: image/png
+Content-Length: 2807
+Strict-Transport-Security: max-age=31536000
+
+# 5. favicon.ico
+$ curl -sI https://scratchpad.sji.one/favicon.ico
+HTTP/1.1 200 OK
+Content-Type: image/x-icon
+Content-Length: 337
+Strict-Transport-Security: max-age=31536000
+
+# 6. site.webmanifest
+$ curl -sI https://scratchpad.sji.one/site.webmanifest
+HTTP/1.1 200 OK
+Content-Type: application/manifest+json; charset=utf-8
+Strict-Transport-Security: max-age=31536000
+
+# 7. Unknown route 404 behavior (replaces soft-404)
+$ curl -sI https://scratchpad.sji.one/nope-xyz
+HTTP/1.1 404 Not Found
+Content-Type: text/html; charset=utf-8
+Strict-Transport-Security: max-age=31536000
+
+# 8. Live title and canonical check
+$ curl -s https://scratchpad.sji.one/ | grep -E "(<title>|<link rel=\"canonical\")"
+<title>Scratchpad — Free Local-First Writing Workspace | SJI</title>
+<link rel="canonical" href="https://scratchpad.sji.one/" />
+```
+
+---
+
 ## 4. Raw HTML Structure & Indexability Verification
 
 Inspecting `dist/index.html` (the initial HTTP response prior to client JavaScript execution):
