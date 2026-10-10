@@ -131,7 +131,7 @@ Connection: keep-alive
 
 ## 3b. Live Production Domain Verification (`https://scratchpad.sji.one/`)
 
-Following deployment of commit `0f51197` to `origin/main`, all endpoints were tested against the live Cloudflare production domain:
+Following deployment of commit `6847563` to `origin/main`, all endpoints were tested against the live Cloudflare production domain:
 
 ### Live Discovery & Asset Responses
 ```bash
@@ -140,7 +140,7 @@ $ curl -sI https://scratchpad.sji.one/robots.txt
 HTTP/1.1 200 OK
 Content-Type: text/plain; charset=utf-8
 Content-Length: 72
-Strict-Transport-Security: max-age=31536000
+Strict-Transport-Security: max-age=63072000; includeSubDomains
 x-content-type-options: nosniff
 x-frame-options: SAMEORIGIN
 Cache-Control: public, max-age=86400
@@ -150,45 +150,58 @@ $ curl -sI https://scratchpad.sji.one/sitemap.xml
 HTTP/1.1 200 OK
 Content-Type: application/xml; charset=utf-8
 Content-Length: 270
-Strict-Transport-Security: max-age=31536000
+Strict-Transport-Security: max-age=63072000; includeSubDomains
 
-# 3. og-image.png
+# 3. og-image.jpg (Primary social preview image)
+$ curl -sI https://scratchpad.sji.one/og-image.jpg
+HTTP/1.1 200 OK
+Content-Type: image/jpeg
+Content-Length: 43786
+Strict-Transport-Security: max-age=63072000; includeSubDomains
+
+# 4. og-image.png (Preserved legacy asset)
 $ curl -sI https://scratchpad.sji.one/og-image.png
 HTTP/1.1 200 OK
 Content-Type: image/png
 Content-Length: 853746
-Strict-Transport-Security: max-age=31536000
+Strict-Transport-Security: max-age=63072000; includeSubDomains
 
-# 4. apple-touch-icon.png
+# 5. apple-touch-icon.png
 $ curl -sI https://scratchpad.sji.one/apple-touch-icon.png
 HTTP/1.1 200 OK
 Content-Type: image/png
 Content-Length: 2807
-Strict-Transport-Security: max-age=31536000
+Strict-Transport-Security: max-age=63072000; includeSubDomains
 
-# 5. favicon.ico
+# 6. favicon.ico
 $ curl -sI https://scratchpad.sji.one/favicon.ico
 HTTP/1.1 200 OK
 Content-Type: image/x-icon
 Content-Length: 337
-Strict-Transport-Security: max-age=31536000
+Strict-Transport-Security: max-age=63072000; includeSubDomains
 
-# 6. site.webmanifest
+# 7. site.webmanifest
 $ curl -sI https://scratchpad.sji.one/site.webmanifest
 HTTP/1.1 200 OK
 Content-Type: application/manifest+json; charset=utf-8
-Strict-Transport-Security: max-age=31536000
+Strict-Transport-Security: max-age=63072000; includeSubDomains
 
-# 7. Unknown route 404 behavior (replaces soft-404)
+# 8. Unknown route 404 behavior (replaces soft-404)
 $ curl -sI https://scratchpad.sji.one/nope-xyz
 HTTP/1.1 404 Not Found
 Content-Type: text/html; charset=utf-8
-Strict-Transport-Security: max-age=31536000
+Strict-Transport-Security: max-age=63072000; includeSubDomains
 
-# 8. Live title and canonical check
-$ curl -s https://scratchpad.sji.one/ | grep -E "(<title>|<link rel=\"canonical\")"
+# 9. Live HTML title, canonical, and social image verification
+$ curl -s https://scratchpad.sji.one/ | grep -E "(<title>|<link rel=\"canonical\"|<meta property=\"og:image\"|<meta name=\"twitter:image\")"
 <title>Scratchpad — Free Local-First Writing Workspace | SJI</title>
 <link rel="canonical" href="https://scratchpad.sji.one/" />
+<meta property="og:image" content="https://scratchpad.sji.one/og-image.jpg" />
+<meta name="twitter:image" content="https://scratchpad.sji.one/og-image.jpg" />
+
+# 10. Absence of GitHub link in client bundle
+$ curl -s https://scratchpad.sji.one/assets/index-Da7Qir7J.js | grep "github.com/23amtics399"
+# (No matches found - GitHub link removed from client bundle)
 ```
 
 ---
